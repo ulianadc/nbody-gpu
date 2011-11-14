@@ -1,0 +1,227 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		552682361470FD6100B5E77A /* kernel.cl in Sources */ = {isa = PBXBuildFile; fileRef = 552682311470FD6100B5E77A /* kernel.cl */; };
+		552682371470FD6100B5E77A /* nbodysim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552682321470FD6100B5E77A /* nbodysim.cpp */; };
+		5526823B1470FD8800B5E77A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5526823A1470FD8800B5E77A /* main.cpp */; };
+		5526823F1470FEA300B5E77A /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5526823E1470FEA300B5E77A /* OpenCL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		552682221470FD3200B5E77A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		552682241470FD3200B5E77A /* NBodySim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NBodySim; sourceTree = BUILT_PRODUCTS_DIR; };
+		552682311470FD6100B5E77A /* kernel.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = kernel.cl; sourceTree = "<group>"; };
+		552682321470FD6100B5E77A /* nbodysim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nbodysim.cpp; sourceTree = "<group>"; };
+		552682331470FD6100B5E77A /* nbodysim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nbodysim.h; sourceTree = "<group>"; };
+		552682381470FD7300B5E77A /* system0.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system0.dat; sourceTree = "<group>"; };
+		552682391470FD7300B5E77A /* system1.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system1.dat; sourceTree = "<group>"; };
+		5526823A1470FD8800B5E77A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5526823E1470FEA300B5E77A /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = ../../../../../System/Library/Frameworks/OpenCL.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		552682211470FD3200B5E77A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5526823F1470FEA300B5E77A /* OpenCL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		552682191470FD3200B5E77A = {
+			isa = PBXGroup;
+			children = (
+				5526823E1470FEA300B5E77A /* OpenCL.framework */,
+				552682271470FD3200B5E77A /* NBodySim */,
+				552682251470FD3200B5E77A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		552682251470FD3200B5E77A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				552682241470FD3200B5E77A /* NBodySim */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		552682271470FD3200B5E77A /* NBodySim */ = {
+			isa = PBXGroup;
+			children = (
+				552682311470FD6100B5E77A /* kernel.cl */,
+				5526823A1470FD8800B5E77A /* main.cpp */,
+				552682321470FD6100B5E77A /* nbodysim.cpp */,
+				552682331470FD6100B5E77A /* nbodysim.h */,
+				552682381470FD7300B5E77A /* system0.dat */,
+				552682391470FD7300B5E77A /* system1.dat */,
+			);
+			path = NBodySim;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		552682231470FD3200B5E77A /* NBodySim */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5526822E1470FD3200B5E77A /* Build configuration list for PBXNativeTarget "NBodySim" */;
+			buildPhases = (
+				552682201470FD3200B5E77A /* Sources */,
+				552682211470FD3200B5E77A /* Frameworks */,
+				552682221470FD3200B5E77A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NBodySim;
+			productName = NBodySim;
+			productReference = 552682241470FD3200B5E77A /* NBodySim */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5526821B1470FD3200B5E77A /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 5526821E1470FD3200B5E77A /* Build configuration list for PBXProject "NBodySim" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 552682191470FD3200B5E77A;
+			productRefGroup = 552682251470FD3200B5E77A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				552682231470FD3200B5E77A /* NBodySim */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		552682201470FD3200B5E77A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				552682361470FD6100B5E77A /* kernel.cl in Sources */,
+				552682371470FD6100B5E77A /* nbodysim.cpp in Sources */,
+				5526823B1470FD8800B5E77A /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5526822C1470FD3200B5E77A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5526822D1470FD3200B5E77A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5526822F1470FD3200B5E77A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NBodySim\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		552682301470FD3200B5E77A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NBodySim\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5526821E1470FD3200B5E77A /* Build configuration list for PBXProject "NBodySim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5526822C1470FD3200B5E77A /* Debug */,
+				5526822D1470FD3200B5E77A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5526822E1470FD3200B5E77A /* Build configuration list for PBXNativeTarget "NBodySim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5526822F1470FD3200B5E77A /* Debug */,
+				552682301470FD3200B5E77A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5526821B1470FD3200B5E77A /* Project object */;
+}
