@@ -7,7 +7,7 @@
 // http://www.browndeertechnology.com/docs/BDT_OpenCL_Tutorial_NBody-rev3.html#algorithm
 
 #include <iostream>
-#include "nbodysim.h"
+#include "n2nbodysim.h"
 
 #define KERNEL_ROOT "."
 #define SYSTEM_ROOT "."
@@ -15,7 +15,7 @@
 int main (int argc, const char * argv[])
 {
     // Create simulation object with kernel.cl
-    NBodySim sim(KERNEL_ROOT "/kernel.cl");
+    N2NBodySim sim(KERNEL_ROOT "/kernel.cl");
     
     // Load system from file and simulate (10 iterations)
     sim.loadData(SYSTEM_ROOT "/system0.dat");

@@ -1,10 +1,10 @@
 //
-//  nbodysim.h
+//  n2nbodysim.h
 //  NBodySim
 //
 
-#ifndef _NBODYSIM_H_
-#define _NBODYSIM_H_
+#ifndef NBodySim_n2nbodysim_h
+#define NBodySim_n2nbodysim_h
 
 #include <OpenCL/opencl.h>
 
@@ -25,16 +25,16 @@ struct Body {
     float mass;
 };
 
-// Main simulation class
-class NBodySim {
+// N^2 N-Body Simulation
+class N2NBodySim {
     
 public:
     
     // Constructors
-    NBodySim(const char *filePath);
+    N2NBodySim(const char *filePath);
     
     // Destructor
-    ~NBodySim();
+    ~N2NBodySim();
     
     // Load system data
     void loadData(const char *filePath);

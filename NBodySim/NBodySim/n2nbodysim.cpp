@@ -1,13 +1,13 @@
 //
-//  nbodysim.cpp
+//  n2nbodysim.cpp
 //  NBodySim
 //
 
 #include <stdio.h>
 #include <vector>
-#include "nbodysim.h"
+#include "n2nbodysim.h"
 
-NBodySim::NBodySim(const char *kernelPath)
+N2NBodySim::N2NBodySim(const char *kernelPath)
     : mDataLoaded(false)
 {
     printf("DBG: Creating simulation object.\n");
@@ -27,7 +27,7 @@ NBodySim::NBodySim(const char *kernelPath)
     buildKernel(kernelPath);
 }
 
-NBodySim::~NBodySim()
+N2NBodySim::~N2NBodySim()
 {
     printf("DBG: Destroying simulation object.\n");
     
@@ -50,7 +50,7 @@ NBodySim::~NBodySim()
     checkError(mErr, "clReleaseContext");
 }
 
-void NBodySim::loadData(const char *filePath)
+void N2NBodySim::loadData(const char *filePath)
 {
     printf("DBG: Loading system data.\n");
     
@@ -138,7 +138,7 @@ void NBodySim::loadData(const char *filePath)
     mSimIt = 0;
 }
 
-void NBodySim::run(int iterations)
+void N2NBodySim::run(int iterations)
 {
     printf("Beginning simulation run (%d iteration(s)).\n", iterations);
     
@@ -180,7 +180,7 @@ void NBodySim::run(int iterations)
     printHostState();
 }
 
-void NBodySim::clearData()
+void N2NBodySim::clearData()
 {
     printf("DBG: Clearing stored system data.\n");
     
@@ -197,7 +197,7 @@ void NBodySim::clearData()
     mNumBodies = 0;
 }
 
-void NBodySim::printHostState()
+void N2NBodySim::printHostState()
 {
     for (int i = 0; i < mNumBodies; i++) {
         printf("   [%5d] = { (%g,%g,%g), (%g,%g,%g), %g }\n", i,
@@ -207,7 +207,7 @@ void NBodySim::printHostState()
     }
 }
 
-void NBodySim::buildKernel(const char *filePath)
+void N2NBodySim::buildKernel(const char *filePath)
 {
     printf("DBG: Loading and building device kernel.\n");
     
@@ -267,7 +267,7 @@ void NBodySim::buildKernel(const char *filePath)
 //    printf("DBG: mMaxWorkGroupSize = %lu\n", mMaxWorkGroupSize);
 }
 
-void NBodySim::checkError(cl_int err, const char  *functionName)
+void N2NBodySim::checkError(cl_int err, const char  *functionName)
 {
     // If function was not successful, print the error
     if (err != CL_SUCCESS) {
@@ -276,7 +276,7 @@ void NBodySim::checkError(cl_int err, const char  *functionName)
     }
 }
 
-const char *NBodySim::clErrorToString(cl_int error)
+const char *N2NBodySim::clErrorToString(cl_int error)
 {
     // Array of all errors
     static const char *errorString[] = {
