@@ -1,0 +1,3 @@
+Quick notes:
+- System data files have the following format: "posx,posy,posz,velx,vely,velz,mass"
+- Make sure that you have either set the KERNEL_ROOT and SYSTEM_ROOT macros in main.cpp or instructed Xcode to use a custom working directory to locate kernel.cl and any system.dat files.
