@@ -61,10 +61,19 @@ __kernel void nbody(__global Body *curState,  // current state
             pj = (float4)(curState[j].posx, curState[j].posy, curState[j].posz, 0.0f);
             mj = curState[j].mass;
             
-            // Compute force due to j
+            // Square of distance between i and j
             r = pow((pj.x - pi.x), 2) + pow((pj.y - pi.y), 2) + pow((pj.z - pi.z), 2);
+            
+            // Ignore if j is close to avoid divide by zero
+//            if (fabs(r) < 1000.0f)
+//                continue;
+            
+            // Unit vector to j
             u = (pj - pi) / sqrt(r);
-            fj = u * ((G * mi * mj) / r);
+            
+            // Force vector due to j
+            fj = (float4) (G * mi * mj); //u * ((G * mi * mj));// / r);
+//            fj = (float4) 0.0f;
             
             // Add force due to j to total force on i
             fTotal += fj;

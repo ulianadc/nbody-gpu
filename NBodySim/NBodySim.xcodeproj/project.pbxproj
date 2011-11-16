@@ -28,8 +28,6 @@
 /* Begin PBXFileReference section */
 		552682241470FD3200B5E77A /* NBodySim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NBodySim; sourceTree = BUILT_PRODUCTS_DIR; };
 		552682311470FD6100B5E77A /* kernel.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = kernel.cl; sourceTree = "<group>"; };
-		552682381470FD7300B5E77A /* system0.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system0.dat; sourceTree = "<group>"; };
-		552682391470FD7300B5E77A /* system1.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system1.dat; sourceTree = "<group>"; };
 		5526823A1470FD8800B5E77A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5526823E1470FEA300B5E77A /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = ../../../../../System/Library/Frameworks/OpenCL.framework; sourceTree = "<group>"; };
 		55BDD2651471035A00D3D010 /* n2nbodysim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = n2nbodysim.cpp; sourceTree = "<group>"; };
@@ -72,8 +70,6 @@
 				5526823A1470FD8800B5E77A /* main.cpp */,
 				55BDD2651471035A00D3D010 /* n2nbodysim.cpp */,
 				55BDD2661471035A00D3D010 /* n2nbodysim.h */,
-				552682381470FD7300B5E77A /* system0.dat */,
-				552682391470FD7300B5E77A /* system1.dat */,
 			);
 			path = NBodySim;
 			sourceTree = "<group>";

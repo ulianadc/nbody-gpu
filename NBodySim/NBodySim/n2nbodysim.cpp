@@ -4,6 +4,7 @@
 //
 
 #include <stdio.h>
+#include <time.h>
 #include <vector>
 #include "n2nbodysim.h"
 
@@ -52,7 +53,7 @@ N2NBodySim::~N2NBodySim()
 
 void N2NBodySim::loadData(const char *filePath)
 {
-    printf("DBG: Loading system data.\n");
+//    printf("DBG: Loading system data.\n");
     
     // Check for existing data
     if (mDataLoaded) {
@@ -83,7 +84,7 @@ void N2NBodySim::loadData(const char *filePath)
         fgets(line, 256, fh);
         
         // Grab body
-        tmp = sscanf(line, " %f , %f , %f , %f , %f, %f , %f ", &b.posx, &b.posy, &b.posz,
+        tmp = sscanf(line, " %f %f %f %f %f %f %f ", &b.posx, &b.posy, &b.posz,
                      &b.velx, &b.vely, &b.velz, &b.mass);
         if (tmp != 7)
             continue;
@@ -101,7 +102,7 @@ void N2NBodySim::loadData(const char *filePath)
     
     // Debug
     printf("Read in %lu particles from %s:\n", mNumBodies, filePath);
-    printHostState();
+//    printHostState();
     
     // Close the file
     fclose(fh);
@@ -142,7 +143,12 @@ void N2NBodySim::run(int iterations)
 {
     printf("Beginning simulation run (%d iteration(s)).\n", iterations);
     
+    // State pointers
     cl_mem *curState, *nextState;
+    
+    // Timing
+    clock_t startTime, endTime;
+    startTime = clock();
     
     for (int i = 0; i < iterations; i++) {
         
@@ -176,13 +182,17 @@ void N2NBodySim::run(int iterations)
         
     }
     
-    printf("Simulation results:\n");
-    printHostState();
+    endTime = clock();
+    float timeElapsed = ((float) (endTime - startTime)) / CLOCKS_PER_SEC;
+    
+    printf("Simulation finished in %g seconds.\n", timeElapsed);
+//    printf("Results:\n");
+//    printHostState();
 }
 
 void N2NBodySim::clearData()
 {
-    printf("DBG: Clearing stored system data.\n");
+//    printf("DBG: Clearing stored system data.\n");
     
     mDataLoaded = false;
     

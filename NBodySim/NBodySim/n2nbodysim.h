@@ -6,7 +6,11 @@
 #ifndef NBodySim_n2nbodysim_h
 #define NBodySim_n2nbodysim_h
 
-#include <OpenCL/opencl.h>
+#ifdef __APPLE__
+    #include <OpenCL/opencl.h>
+#else
+    #include <CL/cl.h>
+#endif
 
 // Represents a single particle in the system
 struct Body {
