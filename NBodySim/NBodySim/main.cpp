@@ -19,11 +19,10 @@ int main (int argc, const char * argv[])
     
     // Load system from file and simulate
     char sysFileName[256];
-    for (int i = 4096; i <= 65536; i += 4096) {
+    for (int i = 4096; i <= 4*4096; i += 4096) {
         sprintf(sysFileName, "%s/system%d.dat", SYSTEM_ROOT, i);
         sim.loadData(sysFileName);
-        sim.run(5);
-        sim.run(5);
+        sim.run(1);
         sim.clearData();
     }
     

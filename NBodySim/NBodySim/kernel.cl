@@ -6,6 +6,11 @@
 // Gravitational constant
 #define G ((float4)(6.674e-11))
 
+
+#ifndef __APPLE__
+    typedef unsigned long size_t
+#endif
+
 // Represents a single particle in the system
 typedef struct {
     
@@ -72,7 +77,7 @@ __kernel void nbody(__global Body *curState,  // current state
             u = (pj - pi) / sqrt(r);
             
             // Force vector due to j
-            fj = (float4) (G * mi * mj); //u * ((G * mi * mj));// / r);
+            fj = u * ((G * mi * mj) / r);
 //            fj = (float4) 0.0f;
             
             // Add force due to j to total force on i
