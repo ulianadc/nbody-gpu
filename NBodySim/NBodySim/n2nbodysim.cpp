@@ -4,6 +4,8 @@
 //
 
 #include <stdio.h>
+#include <iostream>
+#include <fstream>
 #include <time.h>
 #include <vector>
 #include "n2nbodysim.h"
@@ -11,7 +13,7 @@
 N2NBodySim::N2NBodySim(const char *kernelPath)
     : mDataLoaded(false)
 {
-    printf("DBG: Creating simulation object.\n");
+//    printf("DBG: Creating simulation object.\n");
     
     mErr = clGetPlatformIDs(1, &mPlatform, NULL);
     checkError(mErr, "clGetPlatformIDs");
@@ -30,7 +32,7 @@ N2NBodySim::N2NBodySim(const char *kernelPath)
 
 N2NBodySim::~N2NBodySim()
 {
-    printf("DBG: Destroying simulation object.\n");
+//    printf("DBG: Destroying simulation object.\n");
     
     mErr = clFlush(mCommands);
     checkError(mErr, "clFlush");
@@ -53,7 +55,7 @@ N2NBodySim::~N2NBodySim()
 
 void N2NBodySim::loadData(const char *filePath)
 {
-//    printf("DBG: Loading system data.\n");
+    using namespace std;
     
     // Check for existing data
     if (mDataLoaded) {
@@ -65,47 +67,43 @@ void N2NBodySim::loadData(const char *filePath)
     mDataLoaded = true;
     
     // Open system file
-    FILE *fh = fopen(filePath, "r");
-    if (!fh) {
+    ifstream fh;
+    fh.open(filePath, ios::in | ios::binary);
+    if (!fh.is_open()) {
         printf("E: Unable to open %s (read-only)\n", filePath);
         exit(EXIT_FAILURE);
     }
     
-    // Load particles
-    std::vector<Body> bodies;
-    Body b;
-    char line[256];
-    int lineNum = 0, tmp;
-    do {
-        
-        // Read line
-        lineNum++;
-        line[0] = '\0';
-        fgets(line, 256, fh);
-        
-        // Grab body
-        tmp = sscanf(line, " %f %f %f %f %f %f %f ", &b.posx, &b.posy, &b.posz,
-                     &b.velx, &b.vely, &b.velz, &b.mass);
-        if (tmp != 7)
-            continue;
-        bodies.push_back(b);
-        
-    } while (!feof(fh));
+    // Get file size and calc particle count
+    fh.seekg(0, ios::end);
+    mNumBodies = (int)(fh.tellg() / 4 / 7);
+    fh.seekg(0, ios::beg);
     
-    // Grab system size
-    mNumBodies = bodies.size();
-    
-    // Populate host system state
+    // Setup host state
     mHostState = new Body[mNumBodies];
-    for (int i = 0; i < mNumBodies; i++)
-        mHostState[i] = bodies[i];
+    
+    // Load particles
+    for (int i = 0; i < mNumBodies; i++) {
+        
+        // Read in position
+        fh.read((char *) &mHostState[i].posx, sizeof(float));
+        fh.read((char *) &mHostState[i].posy, sizeof(float));
+        fh.read((char *) &mHostState[i].posz, sizeof(float));
+        
+        // Read in velocity
+        fh.read((char *) &mHostState[i].velx, sizeof(float));
+        fh.read((char *) &mHostState[i].vely, sizeof(float));
+        fh.read((char *) &mHostState[i].velz, sizeof(float));
+        
+        // Read in mass
+        fh.read((char *) &mHostState[i].mass, sizeof(float));
+        
+    }
+    fh.close();
     
     // Debug
     printf("Read in %lu particles from %s:\n", mNumBodies, filePath);
 //    printHostState();
-    
-    // Close the file
-    fclose(fh);
     
     // Set work group size
     if (mNumBodies > mMaxWorkGroupSize)
@@ -219,7 +217,7 @@ void N2NBodySim::printHostState()
 
 void N2NBodySim::buildKernel(const char *filePath)
 {
-    printf("DBG: Loading and building device kernel.\n");
+//    printf("DBG: Loading and building device kernel.\n");
     
     // Open kernel source
     FILE *fh = fopen(filePath, "r");
