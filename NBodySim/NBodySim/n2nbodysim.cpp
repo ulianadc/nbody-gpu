@@ -83,7 +83,7 @@ void N2NBodySim::loadData(const char *filePath)
     mHostState = new Body[mNumBodies];
     
     // Load particles
-    for (int i = 0; i < mNumBodies; i++) {
+    for (unsigned int i = 0; i < mNumBodies; i++) {
         
         // Read in position
         fh.read((char *) &mHostState[i].posx, sizeof(float));
@@ -205,7 +205,7 @@ void N2NBodySim::clearData()
 
 void N2NBodySim::printHostState()
 {
-    for (int i = 0; i < mNumBodies; i++) {
+    for (unsigned int i = 0; i < mNumBodies; i++) {
         printf("   [%5d] = { (%g,%g,%g), (%g,%g,%g), %g }\n", i,
                mHostState[i].posx, mHostState[i].posy, mHostState[i].posz,
                mHostState[i].velx, mHostState[i].vely, mHostState[i].velz,
@@ -224,12 +224,12 @@ void N2NBodySim::buildKernel(const char *filePath)
         exit(EXIT_FAILURE);
     }
     fseek(fh, 0, SEEK_END);
-    long fileSize = ftell(fh);
+    unsigned long fileSize = ftell(fh);
     fseek(fh, 0, SEEK_SET);
     char *buf = new char[fileSize+1];
     
     // Read it in
-    size_t tmp = fread(buf, 1, fileSize, fh);
+    unsigned long tmp = fread(buf, 1, fileSize, fh);
     
     // Check for read error
     if (tmp != fileSize)
