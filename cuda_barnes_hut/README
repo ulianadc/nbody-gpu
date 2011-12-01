@@ -1,0 +1,14 @@
+Originally from http://www.gpucomputing.net/?q=node/1314
+Adapted by Ben Shelton
+
+Build with "nvcc -arch=sm_21 BurtscherGCG.2.1.cu"
+
+Run with "./a.out 16384 1000 system16384.dat 1"
+
+where
+
+Argument 1: number of bodies
+Argument 2: number of iterations
+Argument 3: data file
+Argument 4: how often to send data back (1 is every iteration, 10 is every 10 iterations, etc.)
+
