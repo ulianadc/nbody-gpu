@@ -6,11 +6,6 @@
 // Gravitational constant
 #define G ((float4)(6.674e-11))
 
-
-#ifndef __APPLE__
-    typedef unsigned long size_t
-#endif
-
 // Represents a single particle in the system
 typedef struct {
     
@@ -29,12 +24,12 @@ typedef struct {
 } Body;
 
 // Main kernel routine
-__kernel void nbody(__global Body *curState,  // current state
-                    __global Body *nextState, // next state
-                    const size_t numBodies)   // system size
+__kernel void nbody(__global Body *curState,       // current state
+                    __global Body *nextState,      // next state
+                    const unsigned long numBodies) // system size
 {
     // Grab unique global work-item id
-    size_t i = get_global_id(0);
+    unsigned long i = get_global_id(0);
     
     // Proceed only if id is within the system size
     if (i < numBodies) {
@@ -56,7 +51,7 @@ __kernel void nbody(__global Body *curState,  // current state
         fTotal = (float4) 0.0f;
         
         // Iterate through all other bodies
-        for (size_t j = 0; j < numBodies; j++) {
+        for (unsigned long j = 0; j < numBodies; j++) {
             
             // Skip body i
             if (j == i)

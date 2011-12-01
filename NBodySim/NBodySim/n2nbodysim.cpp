@@ -184,8 +184,6 @@ void N2NBodySim::run(int iterations)
     float timeElapsed = ((float) (endTime - startTime)) / CLOCKS_PER_SEC;
     
     printf("Simulation finished in %g seconds.\n", timeElapsed);
-//    printf("Results:\n");
-//    printHostState();
 }
 
 void N2NBodySim::clearData()
