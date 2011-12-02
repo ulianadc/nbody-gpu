@@ -14,6 +14,8 @@
 
 int main (int argc, const char * argv[])
 {
+    printf("%% N^2 Simulation Results\n\n");
+
     // Create simulation object with kernel.cl
     N2NBodySim sim(KERNEL_ROOT "/kernel.cl");
     
@@ -27,11 +29,13 @@ int main (int argc, const char * argv[])
 //        sim.run(10, 1);
 //        sim.clearData();
 //    }
-    sprintf(sysFileName, "%s/system%06d.dat", SYSTEM_ROOT, 4*(1<<14));
-    for (int i = 0; i <= 20; i += 2) {
-        sim.loadData(sysFileName);
-        sim.run(20, (i == 0 ? 1 : i));
-        sim.clearData();
+    for (int i = (1<<8); i <= (1<<14); i += (1<<8)) {
+        sprintf(sysFileName, "%s/system%06d.dat", SYSTEM_ROOT, i);
+        for (int i = 0; i <= 10; i += 2) {
+            sim.loadData(sysFileName);
+            sim.run(10, (i == 0 ? 1 : i));
+            sim.clearData();
+        }
     }
     
     printf("\t];\n");
