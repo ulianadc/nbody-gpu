@@ -101,7 +101,6 @@ void N2NBodySim::loadData(const char *filePath)
     }
     fh.close();
     
-    // Debug
 //    printf("Read in %lu particles from %s:\n", mNumBodies, filePath);
     
     // Set local work group size
@@ -149,7 +148,7 @@ void N2NBodySim::run(unsigned int iterations, unsigned int iterationsPerWriteBac
     clock_t startTime, endTime;
     startTime = clock();
     
-    for (int i = 0; i < iterations; i++) {
+    for (unsigned int i = 0; i < iterations; i++) {
         
         // Toggle between two copies of system within device mem
         if (mSimIt++ % 2 == 0) {

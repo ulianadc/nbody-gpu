@@ -27,7 +27,7 @@ int main (int argc, const char * argv[])
 //        sim.run(10, 1);
 //        sim.clearData();
 //    }
-    sprintf(sysFileName, "%s/system%06d.dat", SYSTEM_ROOT, 10*(1<<14));
+    sprintf(sysFileName, "%s/system%06d.dat", SYSTEM_ROOT, 4*(1<<14));
     for (int i = 0; i <= 20; i += 2) {
         sim.loadData(sysFileName);
         sim.run(20, (i == 0 ? 1 : i));
