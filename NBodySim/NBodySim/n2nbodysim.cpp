@@ -171,6 +171,7 @@ void N2NBodySim::run(int iterations)
         checkError(mErr, "clSetKernelArg");
         
         // Run the darn thing...
+        printf("%lu\n", mWorkGroupSize);
         mErr = clEnqueueNDRangeKernel(mCommands, mKernel, 1, NULL, &mNumBodies, NULL, //&mWorkGroupSize,
                                       0, NULL, NULL);
         checkError(mErr, "clEnqueueNDRangeKernel");
