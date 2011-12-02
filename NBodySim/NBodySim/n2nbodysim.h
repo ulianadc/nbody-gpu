@@ -44,7 +44,7 @@ public:
     void loadData(const char *filePath);
     
     // Start simulation
-    void run(int iterations, int iterationsPerWriteBack = 1);
+    void run(unsigned int iterations, unsigned int iterationsPerWriteBack = 1);
     
     // Clear all system data
     void clearData();
@@ -72,7 +72,7 @@ private:
     cl_kernel mKernel;
     
     // Other device info
-    size_t mMaxWorkGroupSize;
+    unsigned long mMaxWorkGroupSize;
     
     // Device memory 
     cl_mem mDevStateA;
@@ -83,9 +83,9 @@ private:
     
     // Data info
     bool mDataLoaded;
-    size_t mNumBodies;
-    size_t mStateMemSize;
-    size_t mWorkGroupSize;
+    unsigned long mNumBodies;
+    unsigned long mStateMemSize;
+    unsigned long mWorkGroupSize;
     
     // Sim state
     unsigned int mSimIt;

@@ -102,7 +102,7 @@ void N2NBodySim::loadData(const char *filePath)
     fh.close();
     
     // Debug
-    printf("Read in %lu particles from %s:\n", mNumBodies, filePath);
+//    printf("Read in %lu particles from %s:\n", mNumBodies, filePath);
     
     // Set local work group size
     mWorkGroupSize = mNumBodies;
@@ -138,9 +138,9 @@ void N2NBodySim::loadData(const char *filePath)
     mSimIt = 0;
 }
 
-void N2NBodySim::run(int iterations, int iterationsPerWriteBack)
+void N2NBodySim::run(unsigned int iterations, unsigned int iterationsPerWriteBack)
 {
-    printf("Beginning simulation run (%d iteration(s)).\n", iterations);
+//    printf("Beginning simulation run (%d iteration(s)).\n", iterations);
     
     // State pointers
     cl_mem *curState, *nextState;
@@ -187,7 +187,10 @@ void N2NBodySim::run(int iterations, int iterationsPerWriteBack)
     endTime = clock();
     float timeElapsed = ((float) (endTime - startTime)) / CLOCKS_PER_SEC;
     
-    printf("Simulation finished in %g seconds.\n", timeElapsed);
+    // [ numBodies numIterations writeBackPeriod timeElapsed ]
+    printf("\t\t%lu %u %u %f;\n", mNumBodies, iterations, iterationsPerWriteBack, timeElapsed);
+    
+//    printf("Simulation finished in %g seconds.\n", timeElapsed);
 }
 
 void N2NBodySim::clearData()
