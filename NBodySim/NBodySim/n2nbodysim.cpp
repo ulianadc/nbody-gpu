@@ -179,7 +179,7 @@ void N2NBodySim::run(int iterations)
         mErr = clEnqueueReadBuffer(mCommands, *nextState, CL_TRUE, 0, mStateMemSize, mHostState, 0,
                                    NULL, NULL);
         checkError(mErr, "clEnqueueReadBuffer");
-        
+         
     }
     
     endTime = clock();
