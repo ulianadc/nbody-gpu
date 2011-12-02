@@ -1900,9 +1900,9 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>344529267.65240401</real>
-		<string>{4531, 1745}</string>
-		<string>{5560, 0}</string>
+		<real>344529593.37622303</real>
+		<string>{4724, 1683}</string>
+		<string>{5322, 0}</string>
 		<string>N2NBodySim::run(int iterations)</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
@@ -5765,9 +5765,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>344529267.65164202</real>
-		<string>{4531, 1745}</string>
-		<string>{5560, 0}</string>
+		<real>344529593.37494999</real>
+		<string>{4724, 1683}</string>
+		<string>{5322, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
