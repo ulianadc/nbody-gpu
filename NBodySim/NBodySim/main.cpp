@@ -22,9 +22,8 @@ int main (int argc, const char * argv[])
     for (int i = (1<<14); i <= 16*(1<<14); i += (1<<14)) {
         sprintf(sysFileName, "%s/system%06d.dat", SYSTEM_ROOT, i);
         sim.loadData(sysFileName);
-        sim.run(1);
+        sim.run(10);
         sim.clearData();
-        break;
     }
     
     return 0;

@@ -103,18 +103,14 @@ void N2NBodySim::loadData(const char *filePath)
     
     // Debug
     printf("Read in %lu particles from %s:\n", mNumBodies, filePath);
-//    printHostState();
     
-    // Set work group size
+    // Set local work group size
     mWorkGroupSize = mNumBodies;
     if (mWorkGroupSize > mMaxWorkGroupSize) {
         unsigned long wgs = mMaxWorkGroupSize;
         while (mNumBodies % wgs > 0) wgs--;
         mWorkGroupSize = wgs;
     }
-    
-//    printf("mWorkGroupSize = %lu, mMaxWorkGroupSize = %lu, mNumBodies = %lu\n",
-//           mWorkGroupSize, mMaxWorkGroupSize, mNumBodies);
     
     // Get device memory size
     mStateMemSize = mNumBodies * sizeof(Body);
@@ -171,9 +167,8 @@ void N2NBodySim::run(int iterations)
         checkError(mErr, "clSetKernelArg");
         
         // Run the darn thing...
-        printf("%lu\n", mWorkGroupSize);
-        mErr = clEnqueueNDRangeKernel(mCommands, mKernel, 1, NULL, &mNumBodies, NULL, //&mWorkGroupSize,
-                                      0, NULL, NULL);
+        mErr = clEnqueueNDRangeKernel(mCommands, mKernel, 1, NULL, &mNumBodies,
+                                      NULL/*&mWorkGroupSize*/, 0, NULL, NULL);
         checkError(mErr, "clEnqueueNDRangeKernel");
         
         // Wait for the kernel to finish
