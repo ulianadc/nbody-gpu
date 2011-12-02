@@ -106,10 +106,15 @@ void N2NBodySim::loadData(const char *filePath)
 //    printHostState();
     
     // Set work group size
-    if (mNumBodies > mMaxWorkGroupSize)
-        mWorkGroupSize = mMaxWorkGroupSize;
-    else
-        mWorkGroupSize = mNumBodies;
+    mWorkGroupSize = mNumBodies;
+    if (mWorkGroupSize > mMaxWorkGroupSize) {
+        unsigned long wgs = mMaxWorkGroupSize;
+        while (mNumBodies % wgs > 0) wgs--;
+        mWorkGroupSize = wgs;
+    }
+    
+//    printf("mWorkGroupSize = %lu, mMaxWorkGroupSize = %lu, mNumBodies = %lu\n",
+//           mWorkGroupSize, mMaxWorkGroupSize, mNumBodies);
     
     // Get device memory size
     mStateMemSize = mNumBodies * sizeof(Body);
