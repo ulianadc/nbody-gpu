@@ -44,7 +44,7 @@ public:
     void loadData(const char *filePath);
     
     // Start simulation
-    void run(int iterations);
+    void run(int iterations, int iterationsPerWriteBack = 1);
     
     // Clear all system data
     void clearData();

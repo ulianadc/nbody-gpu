@@ -138,7 +138,7 @@ void N2NBodySim::loadData(const char *filePath)
     mSimIt = 0;
 }
 
-void N2NBodySim::run(int iterations)
+void N2NBodySim::run(int iterations, int iterationsPerWriteBack)
 {
     printf("Beginning simulation run (%d iteration(s)).\n", iterations);
     
@@ -175,10 +175,12 @@ void N2NBodySim::run(int iterations)
         mErr = clFinish(mCommands);
         checkError(mErr, "clFinish");
         
-        // Read back next state results
-        mErr = clEnqueueReadBuffer(mCommands, *nextState, CL_TRUE, 0, mStateMemSize, mHostState, 0,
-                                   NULL, NULL);
-        checkError(mErr, "clEnqueueReadBuffer");
+        // Write back next state results
+        if (i % iterationsPerWriteBack == iterationsPerWriteBack - 1) {
+            mErr = clEnqueueReadBuffer(mCommands, *nextState, CL_TRUE, 0, mStateMemSize, mHostState, 0,
+                                       NULL, NULL);
+            checkError(mErr, "clEnqueueReadBuffer");
+        }
          
     }
     
