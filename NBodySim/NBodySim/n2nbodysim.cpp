@@ -176,7 +176,8 @@ void N2NBodySim::run(int iterations)
         checkError(mErr, "clEnqueueNDRangeKernel");
         
         // Wait for the kernel to finish
-        clFinish(mCommands);
+        mErr = clFinish(mCommands);
+        checkError(mErr, "clFinish");
         
         // Read back next state results
         mErr = clEnqueueReadBuffer(mCommands, *nextState, CL_TRUE, 0, mStateMemSize, mHostState, 0,
