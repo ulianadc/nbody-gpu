@@ -73,7 +73,6 @@ __kernel void nbody(__global Body *curState,       // current state
             
             // Force vector due to j
             fj = u * ((G * mi * mj) / r);
-//            fj = (float4) 0.0f;
             
             // Add force due to j to total force on i
             fTotal += fj;
